@@ -196,6 +196,18 @@ function vm_install() {
 	    distro_commands=("${rh_distro_commands[@]}")
 	    final_firstboot_cmd=("${disable_cgroupv2[@]}")
 	    ;;
+        alma)
+	    distro_name=alma-8.5
+	    osvariant=rhel8.5
+	    distro_commands=("${rh_distro_commands[@]}")
+	    final_firstboot_cmd=("${disable_cgroupv2[@]}")
+	    ;;
+        alma*)
+	    distro_name=alma-${distro/alma/}
+	    osvariant=rhel${distro/alma/}
+	    distro_commands=("${rh_distro_commands[@]}")
+	    final_firstboot_cmd=("${disable_cgroupv2[@]}")
+	    ;;
 	*)
 	    die "Distro $1 not recognized. Please choose ubuntu, centos or fedora"
     esac
